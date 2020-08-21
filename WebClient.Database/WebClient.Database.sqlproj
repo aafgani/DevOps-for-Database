@@ -60,8 +60,20 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\Views" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="PublishProfiles" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Employee.sql" />
+    <Build Include="dbo\Tables\Address.sql" />
+    <Build Include="dbo\Views\FullEmployee.sql" />
+    <Build Include="dbo\Stored Procedures\spEmployee_FilterByLastDepartment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="WebClient.Database.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PublishProfiles\LocalWebClientDatabase.publish.xml" />
   </ItemGroup>
 </Project>
