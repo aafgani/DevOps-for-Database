@@ -9,7 +9,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using WebClient.Data;
+using Data_Access_Layer.DataContext;
+using BusinessLogic.Interfaces;
+using BusinessLogic.Implementations;
+using Data_Access_Layer.Repository;
+using Data_Access_Layer.Interace;
 
 namespace WebClient
 {
@@ -27,8 +31,11 @@ namespace WebClient
         {
             services.AddControllersWithViews();
 
-            services.AddDbContext<WebClientContext>(options =>
+            services.AddDbContext<DatabaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WebClientContext")));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

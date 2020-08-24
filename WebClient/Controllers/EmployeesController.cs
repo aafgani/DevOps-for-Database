@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BusinessLogic.Interfaces;
+using Data_Access_Layer.DataContext;
+using DomainClass.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebClient.Data;
 using WebClient.Models;
 
 namespace WebClient.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly WebClientContext _context;
+        private readonly DatabaseContext _context;
+        private readonly IEmployeeService employeeService;
 
-        public EmployeesController(WebClientContext context)
+        public EmployeesController(DatabaseContext context, IEmployeeService employeeService)
         {
             _context = context;
+            this.employeeService = employeeService;
         }
 
         // GET: Employees
@@ -34,7 +38,7 @@ namespace WebClient.Controllers
             }
 
             var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.EmployeeId == id);
             if (employee == null)
             {
                 return NotFound();
@@ -58,8 +62,9 @@ namespace WebClient.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
+
+                await employeeService.AddNewEmployeeAsync(employee);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(employee);
@@ -86,9 +91,9 @@ namespace WebClient.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Fullname,Department,Email")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,Fullname,Department,Email")] Employee employee)
         {
-            if (id != employee.Id)
+            if (id != employee.EmployeeId)
             {
                 return NotFound();
             }
@@ -102,7 +107,7 @@ namespace WebClient.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EmployeeExists(employee.Id))
+                    if (!EmployeeExists(employee.EmployeeId))
                     {
                         return NotFound();
                     }
@@ -125,7 +130,7 @@ namespace WebClient.Controllers
             }
 
             var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.EmployeeId == id);
             if (employee == null)
             {
                 return NotFound();
@@ -147,7 +152,7 @@ namespace WebClient.Controllers
 
         private bool EmployeeExists(int id)
         {
-            return _context.Employee.Any(e => e.Id == id);
+            return _context.Employee.Any(e => e.EmployeeId == id);
         }
     }
 }
