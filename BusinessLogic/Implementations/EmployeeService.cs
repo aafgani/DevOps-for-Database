@@ -35,5 +35,14 @@ namespace BusinessLogic.Implementations
                 return emp.ToList();
             }
         }
+
+        public async Task<Employee> GetEmployeeByIdAsync(int id)
+        {
+            using (_unitOfWork)
+            {
+                var emp = await _unitOfWork.Repository().FindAsync<Employee>(x => x.EmployeeId == id);
+                return emp.FirstOrDefault();
+            }
+        }
     }
 }

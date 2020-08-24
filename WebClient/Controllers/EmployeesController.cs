@@ -37,8 +37,8 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
+            var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
+
             if (employee == null)
             {
                 return NotFound();
