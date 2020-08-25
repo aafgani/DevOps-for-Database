@@ -10,22 +10,18 @@ namespace WebClient.Controllers
 {
     public class EmployeesController : Controller
     {
-        private readonly DatabaseContext _context;
         private readonly IEmployeeService employeeService;
 
-        public EmployeesController(DatabaseContext context
-            , IEmployeeService employeeService
+        public EmployeesController(DatabaseContext context, IEmployeeService employeeService
             )
         {
-            _context = context;
             this.employeeService = employeeService;
         }
 
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            //return View(await employeeService.GetListEmployeeAsync());
-            return View(await _context.Employee.ToListAsync());
+            return View(await employeeService.GetListEmployeeAsync());
         }
 
         // GET: Employees/Details/5
@@ -36,9 +32,7 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
-            //var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
+            var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
 
             if (employee == null)
             {
@@ -63,10 +57,7 @@ namespace WebClient.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                //await employeeService.AddNewEmployeeAsync(employee);
-                _context.Add(employee);
-                await _context.SaveChangesAsync();
+                await employeeService.AddNewEmployeeAsync(employee);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -81,8 +72,7 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
-            //var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
-            var employee = await _context.Employee.FindAsync(id);
+            var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
             if (employee == null)
             {
                 return NotFound();
@@ -106,8 +96,7 @@ namespace WebClient.Controllers
             {
                 try
                 {
-                    _context.Update(employee);
-                    await _context.SaveChangesAsync();
+                    await employeeService.UpdateEmployee(employee);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -133,8 +122,7 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
-            //var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
-            var employee = await _context.Employee.FindAsync(id);
+            var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
             if (employee == null)
             {
                 return NotFound();
@@ -149,17 +137,13 @@ namespace WebClient.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var employee = await employeeService.GetEmployeeByIdAsync(id);
-            var employee2 = await employeeService.GetEmployeeByIdAsync(id);
-            //var employee = await _context.Employee.FindAsync(id);
-            //await employeeService.DeleteEmployeeAsync(employee);
-            _context.Employee.Remove(employee);
-            await _context.SaveChangesAsync();
+            await employeeService.DeleteEmployeeAsync(employee);
             return RedirectToAction(nameof(Index));
         }
 
         private bool EmployeeExists(int id)
         {
-            return _context.Employee.Any(e => e.EmployeeId == id);
+            return employeeService.AnyEmployee(id);
         }
     }
 }

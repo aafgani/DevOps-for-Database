@@ -13,5 +13,7 @@ namespace BusinessLogic.Interfaces
         Task<Employee> GetEmployeeByIdAsync(int id);
         Task<int> AddNewEmployeeAsync(Employee employee);
         Task DeleteEmployeeAsync(Employee employee);
+        bool AnyEmployee(int id);
+        Task UpdateEmployee(Employee employee);
     }
 }

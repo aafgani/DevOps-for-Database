@@ -14,5 +14,6 @@ namespace Data_Access_Layer.Interace
         void Update<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
         Task<IEnumerable<T>> List<T>() where T : class;
+        bool Any<T>(Expression<Func<T, bool>> expression) where T : class;
     }
 }

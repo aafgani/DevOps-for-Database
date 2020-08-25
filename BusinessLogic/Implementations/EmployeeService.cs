@@ -19,57 +19,44 @@ namespace BusinessLogic.Implementations
 
         public async Task<int> AddNewEmployeeAsync(Employee employee)
         {
-            using ( _unitOfWork)
-            {
-                _unitOfWork.Repository().Add(employee);
-                await _unitOfWork.CommitAsync();
-                return employee.EmployeeId;
-            }
+            _unitOfWork.Repository().Add(employee);
+            await _unitOfWork.CommitAsync();
+            return employee.EmployeeId;
+        }
+
+        public bool AnyEmployee(int id)
+        {
+            return _unitOfWork.Repository().Any<Employee>(x => x.EmployeeId == id);
         }
 
         public async Task DeleteEmployeeAsync(Employee employee)
         {
-            using (_unitOfWork)
-            {
-                try
-                {
-                    _unitOfWork.Repository().Delete<Employee>(employee);
-                    await _unitOfWork.CommitAsync();
-                }
-                catch (Exception e)
-                {
-
-                    throw;
-                }
-                
-            }
+            _unitOfWork.Repository().Delete<Employee>(employee);
+            await _unitOfWork.CommitAsync();
         }
 
         public async Task<List<Employee>> GetEmployeeAsync(string term)
         {
-            using (_unitOfWork)
-            {
-                var emp = await _unitOfWork.Repository().FindAsync<Employee>(x => x.Fullname.Contains(term));
-                return emp.ToList();
-            }
+            var emp = await _unitOfWork.Repository().FindAsync<Employee>(x => x.Fullname.Contains(term));
+            return emp.ToList();
         }
 
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
-            using (_unitOfWork)
-            {
-                var emp = await _unitOfWork.Repository().SingleOrDefaultAsync<Employee>(x => x.EmployeeId == id);
-                return emp;
-            }
+            var emp = await _unitOfWork.Repository().SingleOrDefaultAsync<Employee>(x => x.EmployeeId == id);
+            return emp;
         }
 
         public async Task<List<Employee>> GetListEmployeeAsync()
         {
-            using (_unitOfWork)
-            {
-                var emp = await _unitOfWork.Repository().List<Employee>();
-                return emp.ToList();
-            }
+            var emp = await _unitOfWork.Repository().List<Employee>();
+            return emp.ToList();
+        }
+
+        public async Task UpdateEmployee(Employee employee)
+        {
+            _unitOfWork.Repository().Update<Employee>(employee);
+            await _unitOfWork.CommitAsync();
         }
     }
 }
