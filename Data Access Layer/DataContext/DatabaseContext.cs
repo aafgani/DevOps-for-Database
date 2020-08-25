@@ -15,10 +15,5 @@ namespace Data_Access_Layer.DataContext
         }
 
         public DbSet<Employee> Employee { get; set; }
-
-        //public Task<int> SaveChangesAsync()
-        //{
-        //    throw new NotImplementedException();
-        //}
     }
 }

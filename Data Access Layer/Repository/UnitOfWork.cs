@@ -10,6 +10,7 @@ namespace Data_Access_Layer.Repository
     public class UnitOfWork : IUnitOfWork
     {
         private readonly DatabaseContext _databaseContext;
+        private bool disposed = false;
 
         public UnitOfWork(DatabaseContext databaseContext)
         {
@@ -23,7 +24,19 @@ namespace Data_Access_Layer.Repository
 
         public void Dispose()
         {
-            _databaseContext.Dispose();
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        private void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _databaseContext.Dispose();
+                }
+            }
+            this.disposed = true;
         }
 
         public IGenericRepository Repository()

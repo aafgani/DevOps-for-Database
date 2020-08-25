@@ -8,8 +8,10 @@ namespace BusinessLogic.Interfaces
 {
     public interface IEmployeeService
     {
+        Task<List<Employee>> GetListEmployeeAsync();
         Task<List<Employee>> GetEmployeeAsync(string term);
         Task<Employee> GetEmployeeByIdAsync(int id);
         Task<int> AddNewEmployeeAsync(Employee employee);
+        Task DeleteEmployeeAsync(Employee employee);
     }
 }

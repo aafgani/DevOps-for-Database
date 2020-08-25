@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using BusinessLogic.Interfaces;
 using Data_Access_Layer.DataContext;
 using DomainClass.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using WebClient.Models;
 
 namespace WebClient.Controllers
 {
@@ -17,7 +13,9 @@ namespace WebClient.Controllers
         private readonly DatabaseContext _context;
         private readonly IEmployeeService employeeService;
 
-        public EmployeesController(DatabaseContext context, IEmployeeService employeeService)
+        public EmployeesController(DatabaseContext context
+            , IEmployeeService employeeService
+            )
         {
             _context = context;
             this.employeeService = employeeService;
@@ -26,6 +24,7 @@ namespace WebClient.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
+            //return View(await employeeService.GetListEmployeeAsync());
             return View(await _context.Employee.ToListAsync());
         }
 
@@ -37,7 +36,9 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
-            var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
+            //var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
+            var employee = await _context.Employee
+                .FirstOrDefaultAsync(m => m.EmployeeId == id);
 
             if (employee == null)
             {
@@ -63,7 +64,9 @@ namespace WebClient.Controllers
             if (ModelState.IsValid)
             {
 
-                await employeeService.AddNewEmployeeAsync(employee);
+                //await employeeService.AddNewEmployeeAsync(employee);
+                _context.Add(employee);
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -78,6 +81,7 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
+            //var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
             var employee = await _context.Employee.FindAsync(id);
             if (employee == null)
             {
@@ -129,8 +133,8 @@ namespace WebClient.Controllers
                 return NotFound();
             }
 
-            var employee = await _context.Employee
-                .FirstOrDefaultAsync(m => m.EmployeeId == id);
+            //var employee = await employeeService.GetEmployeeByIdAsync(id.Value);
+            var employee = await _context.Employee.FindAsync(id);
             if (employee == null)
             {
                 return NotFound();
@@ -144,7 +148,10 @@ namespace WebClient.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Employee.FindAsync(id);
+            var employee = await employeeService.GetEmployeeByIdAsync(id);
+            var employee2 = await employeeService.GetEmployeeByIdAsync(id);
+            //var employee = await _context.Employee.FindAsync(id);
+            //await employeeService.DeleteEmployeeAsync(employee);
             _context.Employee.Remove(employee);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

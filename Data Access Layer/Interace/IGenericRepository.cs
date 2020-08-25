@@ -13,5 +13,6 @@ namespace Data_Access_Layer.Interace
         void Add<T>(T entity) where T : class;
         void Update<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
+        Task<IEnumerable<T>> List<T>() where T : class;
     }
 }

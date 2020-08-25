@@ -27,6 +27,24 @@ namespace BusinessLogic.Implementations
             }
         }
 
+        public async Task DeleteEmployeeAsync(Employee employee)
+        {
+            using (_unitOfWork)
+            {
+                try
+                {
+                    _unitOfWork.Repository().Delete<Employee>(employee);
+                    await _unitOfWork.CommitAsync();
+                }
+                catch (Exception e)
+                {
+
+                    throw;
+                }
+                
+            }
+        }
+
         public async Task<List<Employee>> GetEmployeeAsync(string term)
         {
             using (_unitOfWork)
@@ -40,8 +58,17 @@ namespace BusinessLogic.Implementations
         {
             using (_unitOfWork)
             {
-                var emp = await _unitOfWork.Repository().FindAsync<Employee>(x => x.EmployeeId == id);
-                return emp.FirstOrDefault();
+                var emp = await _unitOfWork.Repository().SingleOrDefaultAsync<Employee>(x => x.EmployeeId == id);
+                return emp;
+            }
+        }
+
+        public async Task<List<Employee>> GetListEmployeeAsync()
+        {
+            using (_unitOfWork)
+            {
+                var emp = await _unitOfWork.Repository().List<Employee>();
+                return emp.ToList();
             }
         }
     }
