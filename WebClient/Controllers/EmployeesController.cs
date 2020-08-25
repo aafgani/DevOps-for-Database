@@ -1,22 +1,25 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using BusinessLogic.Implementations;
 using BusinessLogic.Interfaces;
 using Data_Access_Layer.DataContext;
 using DomainClass.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebClient.Controllers
 {
-    public class EmployeesController : Controller
+    public class EmployeesController : BaseController
     {
         private readonly IEmployeeService employeeService;
 
-        public EmployeesController(DatabaseContext context, IEmployeeService employeeService
-            )
+        public EmployeesController(IHttpContextAccessor ctx) : base(ctx)
         {
-            this.employeeService = employeeService;
+            this.employeeService = ctx.HttpContext.RequestServices.GetRequiredService<IEmployeeService>();
         }
+
 
         // GET: Employees
         public async Task<IActionResult> Index()

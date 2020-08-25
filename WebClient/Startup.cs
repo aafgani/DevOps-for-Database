@@ -14,6 +14,7 @@ using BusinessLogic.Interfaces;
 using BusinessLogic.Implementations;
 using Data_Access_Layer.Repository;
 using Data_Access_Layer.Interace;
+using Microsoft.AspNetCore.Http;
 
 namespace WebClient
 {
@@ -29,13 +30,16 @@ namespace WebClient
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDbContext<DatabaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WebClientContext")));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IEmployeeService, EmployeeService>();
+
+
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
