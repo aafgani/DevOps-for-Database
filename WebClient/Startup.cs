@@ -34,8 +34,8 @@ namespace WebClient
             services.AddDbContext<DatabaseContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("WebClientContext")));
 
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
