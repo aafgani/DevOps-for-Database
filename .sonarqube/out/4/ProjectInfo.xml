@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>WebClient.Database</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>10f3bef3-11ce-4c18-bdc5-b2e76343816e</ProjectGuid>
+  <FullPath>C:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient.Database\WebClient.Database.sqlproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Users\Andrya_A354\source\repos\DevOps for Database\.sonarqube\out\4\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">C:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient.Database\bin\Debug\WebClient.Database.dll.RoslynCA.json|C:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient.Database\bin\Debug\WebClient.Database.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">C:\Users\Andrya_A354\source\repos\DevOps for Database\.sonarqube\out\4</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+</ProjectInfo>

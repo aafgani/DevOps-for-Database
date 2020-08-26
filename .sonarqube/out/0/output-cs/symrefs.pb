@@ -1,0 +1,14 @@
+‹
+MC:\Users\Andrya_A354\source\repos\DevOps for Database\DomainClass\Employee.cs
+
+ 
+
+
+
+ 
+
+ 
+
+  
+
+ 
