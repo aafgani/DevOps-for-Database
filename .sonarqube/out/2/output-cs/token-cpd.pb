@@ -1,4 +1,112 @@
-µ)
+Û
+aC:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Implementations\Calculator.cs
+	namespace 	
+Core
+ 
+. 
+Implementations 
+{ 
+public 
+
+class 
+
+Calculator 
+: 
+ICalculator )
+{		 
+public
+
+ 
+double
+
+ 
+Add
+
+ 
+(
+
+ 
+double
+
+  
+num1
+
+! %
+,
+
+% &
+double
+
+' -
+num2
+
+. 2
+)
+
+2 3
+{ 	
+return 
+num1 
++ 
+num2 
+; 
+} 	
+public 
+double 
+Divide 
+( 
+double #
+num1$ (
+,( )
+double* 0
+num21 5
+)5 6
+{ 	
+throw 
+new #
+NotImplementedException -
+(- .
+). /
+;/ 0
+} 	
+public 
+double 
+Multiply 
+( 
+double %
+num1& *
+,* +
+double, 2
+num23 7
+)7 8
+{ 	
+throw 
+new #
+NotImplementedException -
+(- .
+). /
+;/ 0
+} 	
+public 
+double 
+	Substract 
+(  
+double  &
+num1' +
+,+ ,
+double- 3
+num24 8
+)8 9
+{ 	
+throw 
+new #
+NotImplementedException -
+(- .
+). /
+;/ 0
+} 	
+} 
+} µ)
 fC:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Implementations\EmployeeService.cs
 	namespace		 	
 BusinessLogic		
@@ -304,7 +412,82 @@ Repository:: "
 ;;;+ ,
 }<< 	
 }== 
-}>> å
+}>> ë
+]C:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Interfaces\ICalculator.cs
+	namespace 	
+Core
+ 
+. 
+
+Interfaces 
+{ 
+public 
+
+	interface 
+ICalculator  
+{ 
+double		 
+Add		 
+(		 
+double		 
+num1		 
+,		 
+double		  &
+num2		' +
+)		+ ,
+;		, -
+double
+
+ 
+	Substract
+
+ 
+(
+
+ 
+double
+
+ 
+num1
+
+  $
+,
+
+$ %
+double
+
+& ,
+num2
+
+- 1
+)
+
+1 2
+;
+
+2 3
+double 
+Multiply 
+( 
+double 
+num1 #
+,# $
+double% +
+num2, 0
+)0 1
+;1 2
+double 
+Divide 
+( 
+double 
+num1 !
+,! "
+double# )
+num2* .
+). /
+;/ 0
+} 
+} å
 bC:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Interfaces\IEmployeeService.cs
 	namespace 	
 BusinessLogic

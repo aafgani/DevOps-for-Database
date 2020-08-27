@@ -1,4 +1,35 @@
-ö
+“
+aC:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Implementations\Calculator.cs
+
+ 
+
+
+
+ 
+
+
+! % 
+
+
+. 2 
+
+ 
+
+$ (
+
+1 5
+
+ 
+
+& *
+
+3 7
+
+ 
+
+' +
+
+4 8ö
 fC:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Implementations\EmployeeService.cs
 
   x
@@ -31,7 +62,40 @@ fC:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Implementat
 44 55 
 
 88 (
-882 :::6 >Œ
+882 :::6 >û
+]C:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Interfaces\ICalculator.cs
+
+  
+
+		 
+
+		 
+
+		' +
+
+
+
+ 
+
+
+
+  $
+
+
+
+- 1
+
+ 
+
+ #
+
+, 0
+
+ 
+
+ !
+
+* .Œ
 bC:\Users\Andrya_A354\source\repos\DevOps for Database\BusinessLogic\Interfaces\IEmployeeService.cs
 
 		 %

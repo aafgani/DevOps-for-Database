@@ -10,5 +10,5 @@ zC:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netco
 ~C:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.csutf-8ú
 êC:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.csutf-8á
 |C:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.csutf-8Ö
-zC:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.csutf-8á
-|C:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netcoreapp3.1\WebClient.RazorTargetAssemblyInfo.csutf-8
+zC:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.csutf-8Å
+vC:\Users\Andrya_A354\source\repos\DevOps for Database\WebClient\obj\Debug\netcoreapp3.1\Web.RazorTargetAssemblyInfo.csutf-8

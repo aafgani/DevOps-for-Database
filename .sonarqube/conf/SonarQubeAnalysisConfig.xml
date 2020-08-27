@@ -100,8 +100,9 @@
     <Property Name="sonar.java.collectAnalysisErrors">false</Property>
     <Property Name="sonar.updatecenter.url">https://update.sonarsource.org/update-center.properties</Property>
     <Property Name="sonar.core.id">BF41A1F2-AW3TvoKjeTndYamPQ5JZ</Property>
-    <Property Name="sonar.inclusions">**/CCAI.OVP.ExcelFunctionApp/**</Property>
-    <Property Name="sonar.core.startTime">25/08/2020 14:09:51</Property>
+    <Property Name="sonar.inclusions">**</Property>
+    <Property Name="sonar.core.startTime">27/08/2020 09:34:41</Property>
+    <Property Name="sonar.global.exclusions">**/*.css,**/*.js</Property>
   </ServerSettings>
   <LocalSettings>
     <Property Name="sonar.host.url">http://localhost:9000</Property>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>UnitTest</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Test</ProjectType>
+  <ProjectGuid>cfa4074d-5829-4673-9ea9-b17c50e8f9a5</ProjectGuid>
+  <FullPath>C:\Users\Andrya_A354\source\repos\DevOps for Database\UnitTest\UnitTest.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\Users\Andrya_A354\source\repos\DevOps for Database\.sonarqube\out\5\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">C:\Users\Andrya_A354\source\repos\DevOps for Database\UnitTest\bin\Debug\netcoreapp3.1\UnitTest.dll.RoslynCA.json|C:\Users\Andrya_A354\source\repos\DevOps for Database\UnitTest\bin\Debug\netcoreapp3.1\UnitTest.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">C:\Users\Andrya_A354\source\repos\DevOps for Database\.sonarqube\out\5</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+</ProjectInfo>
