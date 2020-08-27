@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Data_Access_Layer.DataContext;
+using DomainClass.Models;
 
 namespace Data_Access_Layer.Repository
 {
@@ -16,12 +17,10 @@ namespace Data_Access_Layer.Repository
         {
             _databaseContext = databaseContext;
         }
-
         public Task CommitAsync()
         {
             return _databaseContext.SaveChangesAsync();
         }
-
         public void Dispose()
         {
             Dispose(true);
@@ -39,9 +38,15 @@ namespace Data_Access_Layer.Repository
             this.disposed = true;
         }
 
+        private IEmployeeRepository<Employee> _employeeRepository;
+
+        public IEmployeeRepository<Employee> EmployeeRepository { get { return _employeeRepository = _employeeRepository ??  new EmployeeRepository<Employee>(_databaseContext); }}
+
         public IGenericRepository Repository()
         {
             return new GenericRepository(_databaseContext);
         }
+
+        
     }
 }

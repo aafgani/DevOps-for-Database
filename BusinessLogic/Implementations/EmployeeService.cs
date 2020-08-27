@@ -19,43 +19,43 @@ namespace BusinessLogic.Implementations
 
         public async Task<int> AddNewEmployeeAsync(Employee employee)
         {
-            _unitOfWork.Repository().Add(employee);
+            _unitOfWork.EmployeeRepository.Add(employee);
             await _unitOfWork.CommitAsync();
             return employee.EmployeeId;
         }
 
         public bool AnyEmployee(int id)
         {
-            return _unitOfWork.Repository().Any<Employee>(x => x.EmployeeId == id);
+            return _unitOfWork.EmployeeRepository.Any(x => x.EmployeeId == id);
         }
 
         public async Task DeleteEmployeeAsync(Employee employee)
         {
-            _unitOfWork.Repository().Delete<Employee>(employee);
+            _unitOfWork.EmployeeRepository.Delete(employee);
             await _unitOfWork.CommitAsync();
         }
 
         public async Task<List<Employee>> GetEmployeeAsync(string term)
         {
-            var emp = await _unitOfWork.Repository().FindAsync<Employee>(x => x.Fullname.Contains(term));
+            var emp = await _unitOfWork.EmployeeRepository.FindAsync(x => x.Fullname.Contains(term));
             return emp.ToList();
         }
 
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
-            var emp = await _unitOfWork.Repository().SingleOrDefaultAsync<Employee>(x => x.EmployeeId == id);
+            var emp = await _unitOfWork.EmployeeRepository.SingleOrDefaultAsync(x => x.EmployeeId == id);
             return emp;
         }
 
         public async Task<List<Employee>> GetListEmployeeAsync()
         {
-            var emp = await _unitOfWork.Repository().List<Employee>();
+            var emp = await _unitOfWork.EmployeeRepository.List();
             return emp.ToList();
         }
 
         public async Task UpdateEmployee(Employee employee)
         {
-            _unitOfWork.Repository().Update<Employee>(employee);
+            _unitOfWork.EmployeeRepository.Update(employee);
             await _unitOfWork.CommitAsync();
         }
     }

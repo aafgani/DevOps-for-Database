@@ -13,6 +13,6 @@ namespace Data_Access_Layer.Interace
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
         //Task<int> SaveChangesAsync();
         //DbSet Set(Type entityType);
-        DbSet<TEntity> Set<TEntity>() where TEntity : class;        
+        DbSet<T> Set<T>() where T : class;        
     }
 }

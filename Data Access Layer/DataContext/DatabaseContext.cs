@@ -13,5 +13,6 @@ namespace Data_Access_Layer.DataContext
         public DatabaseContext(DbContextOptions options) : base(options)
         {
         }
+        public DbSet<Employee> Employee { get; set; }
     }
 }
