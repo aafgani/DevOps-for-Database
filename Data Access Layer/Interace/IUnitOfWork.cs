@@ -9,7 +9,6 @@ namespace Data_Access_Layer.Interace
     public interface IUnitOfWork : IDisposable
     {
         IEmployeeRepository<Employee> EmployeeRepository { get; }
-        IGenericRepository Repository();
         Task CommitAsync();
     }
 }

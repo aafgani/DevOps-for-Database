@@ -41,12 +41,6 @@ namespace Data_Access_Layer.Repository
         private IEmployeeRepository<Employee> _employeeRepository;
 
         public IEmployeeRepository<Employee> EmployeeRepository { get { return _employeeRepository = _employeeRepository ??  new EmployeeRepository<Employee>(_databaseContext); }}
-
-        public IGenericRepository Repository()
-        {
-            return new GenericRepository(_databaseContext);
-        }
-
         
     }
 }
